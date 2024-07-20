@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Chat App with Advanced VAD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        #userList {
+            list-style-type: none;
+            padding: 0;
+        }
+        .user-item {
+            margin-bottom: 10px;
+        }
+        .meter-container {
+            width: 100px;
+            height: 10px;
+            background-color: #ddd;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .meter {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+        }
+        #stopButton {
+            background-color: #ff4444;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #stopButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voice Chat App with Advanced VAD</h1>
+    <div>
+        <input type="text" id="usernameInput" placeholder="Enter your username">
+        <input type="text" id="roomInput" placeholder="Enter room name">
+        <button id="joinButton">Join Room</button>
+    </div>
+    <div id="debugInfo" style="height: 200px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-top: 20px;"></div>
+    <div>
+        <h2>Current Room: <span id="currentRoom">None</span></h2>
+        <button id="startButton" disabled>Start Voice Chat</button>
+        <button id="stopButton" disabled>Stop Voice Chat</button>
+        <div id="voiceActivityIndicator"></div>
+    </div>
+    <div>
+        <h2>Users in Room:</h2>
+        <ul id="userList"></ul>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
